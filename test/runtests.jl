@@ -1,6 +1,20 @@
 using UsingAll
 using Test
+using TestPackage
 
-@testset "UsingAll.jl" begin
-    # Write your tests here.
+@testset "Before @useall" begin    
+    for name in [:TestPackage, :greet]
+        @test isdefined(Main, name)
+    end
+    for name in [Symbol("@testmacro"), :TestStruct, :CONSTANT_TEST, :private_greet]
+        @test !isdefined(Main, name)
+    end
+end
+
+@useall TestPackage
+
+@testset "After @useall" begin    
+    for name in [:TestPackage, :greet, Symbol("@testmacro"), :TestStruct, :CONSTANT_TEST, :private_greet]
+        @test isdefined(Main, name)
+    end
 end
