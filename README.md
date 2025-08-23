@@ -17,5 +17,5 @@ using LinearAlgebra
 ### Installation 
 ```julia
 using Pkg
-Pkg.add("https://github.com/KnutAM/UsingAll.jl.git")
+Pkg.add(url = "https://github.com/KnutAM/UsingAll.jl.git")
 ```
