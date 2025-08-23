@@ -25,7 +25,7 @@ function useall(m::Module)
     ex = :(using $(nameof(m)): _)
     items = ex.args[1].args
     pop!(items) # remove "_"
-    for n in names(m; all = true)
+    for n in names(m; all = true, imported = true)
         if n ∉ [Symbol("#eval"), Symbol("#include"), nameof(m), :eval, :include]
             push!(items, Expr(:., n))
         end

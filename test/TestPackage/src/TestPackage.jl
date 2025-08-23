@@ -1,5 +1,7 @@
 module TestPackage
 
+import Base as B
+
 export greet
 
 greet() = print("Hello World!")
